@@ -177,44 +177,43 @@ $id  = $_REQUEST["id"];
                                         <th>Proveedor</th>
                                         <th>Stock</th>
                                         <th>Precio</th>
-                                        <th>Cantidad</th>
-                                        
+                                        <th>Cantidad</th>                                        
                                         <th>Opciones</th>                                       
                                     </tr>
                                 </thead>
                                 <tbody>
                       <?php
-include "config/conexion.php";
-$result = $conexion->query("SELECT * from tproducto ORDER BY id_producto");
-if ($result) {
-    while ($fila = $result->fetch_object()) {
-        echo "<tr>";
-        echo "<td>" . $fila->codigo . "</td>";
-        echo "<td>" . $fila->nombre . "</td>";
-        // OBTENER EL NOMBRE DEL PROVEEDOR
-        $result2 = $conexion->query("SELECT * from tproveedor where id_proveedor=".$fila->id_proveedor);
-        if ($result2) {
-             while ($fila2 = $result2->fetch_object()) {
-                 echo "<td>" . $fila2->nombre . "</td>"; 
-                }
-            }
-         
-        echo "<td>" . $fila->stock . "</td>";
-        echo "<td>" . $fila->precio_venta . "</td>";
-        echo "<td><input type='number' name='" . $fila->id_producto . "' id='" . $fila->id_producto . "' min='1' max='" . $fila->stock . "'></td>";
-        
-        echo "<td>
-        <div class='button-icon-btn'>
-        
-        <button class='btn btn-lightgreen lightgreen-icon-notika btn-reco-mg btn-button-mg' data-toggle='tooltip' data-placement='bottom' title='Anadir al carrito.' onclick='anadirCarrito(" . $fila->id_producto. ",". $fila->stock. ")'><i class='notika-icon notika-credit-card'></i></button>
-        <button class='btn btn-lightgreen lightgreen-icon-notika btn-reco-mg btn-button-mg' data-toggle='tooltip' data-placement='bottom' title='Hacer una devolucion sobre compra.' onclick='devo(" . $fila->id_producto. ")'><i class='notika-icon notika-down-arrow'></i></button>
-        </div>
-        </td>";
-        echo "</tr>";
+                        include "config/conexion.php";
+                        $result = $conexion->query("SELECT * from tproducto ORDER BY id_producto");
+                        if ($result) {
+                            while ($fila = $result->fetch_object()) {
+                                echo "<tr>";
+                                echo "<td>" . $fila->codigo . "</td>";
+                                echo "<td>" . $fila->nombre . "</td>";
+                                // OBTENER EL NOMBRE DEL PROVEEDOR
+                                $result2 = $conexion->query("SELECT * from tproveedor where id_proveedor=".$fila->id_proveedor);
+                                if ($result2) {
+                                    while ($fila2 = $result2->fetch_object()) {
+                                        echo "<td>" . $fila2->nombre . "</td>"; 
+                                        }
+                                    }
+                                
+                                echo "<td>" . $fila->stock . "</td>";
+                                echo "<td>" . $fila->precio_venta . "</td>";
+                                echo "<td><input type='number' name='" . $fila->id_producto . "' id='" . $fila->id_producto . "' min='1' max='" . $fila->stock . "'></td>";
+                                
+                                echo "<td>
+                                <div class='button-icon-btn'>
+                                
+                                <button class='btn btn-lightgreen lightgreen-icon-notika btn-reco-mg btn-button-mg' data-toggle='tooltip' data-placement='bottom' title='Anadir al carrito.' onclick='anadirCarrito(" . $fila->id_producto. ",". $fila->stock. ")'><i class='notika-icon notika-credit-card'></i></button>
+                                <button class='btn btn-lightgreen lightgreen-icon-notika btn-reco-mg btn-button-mg' data-toggle='tooltip' data-placement='bottom' title='Hacer una devolucion sobre compra.' onclick='devo(" . $fila->id_producto. ")'><i class='notika-icon notika-down-arrow'></i></button>
+                                </div>
+                                </td>";
+                                echo "</tr>";
 
-    }
-}
-?>
+                            }
+                        }
+                        ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>

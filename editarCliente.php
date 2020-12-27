@@ -141,67 +141,68 @@ function notify(titulo,texto,from, align, icon, type, animIn, animOut){
 		});
 	}
     function back(){
-        document.location.href="/SISFIN/mostrarClientes.php";
+        document.location.href="/sistemaFinanciero/mostrarClientes.php";
     }	
-function go(){
+    function go(){
 
-    //Validaciones
-   if(document.getElementById('nombre').value==""){
-    //    alert("El campo nombre es obligatorio");
-    //    prueba :p
-     notify(' Advertencia','El campo Nombre es obligatorio.','top', 'right', 'any', 'warning');
-       document.getElementById("nombre").focus();
-   }else if(document.getElementById('apellido').value==""){
-        notify(' Advertencia','El campo Apellido es obligatorio,','top', 'right', 'any', 'warning');
-       document.getElementById("apellido").focus();
-   }else if(document.getElementById('dui').value==""){
-        notify(' Advertencia','El campo DUI es obligatorio','top', 'right', 'any', 'warning');
-       document.getElementById("dui").focus();
-   }else if(document.getElementById('nit').value==""){
-        notify(' Advertencia','El campo NIT es obligatorio', 'top', 'right', 'any', 'warning');
-       document.getElementById("nit").focus();
-   }else if(document.getElementById('direc').value==""){
-        notify(' Advertencia','El campo Direccion es obligatorio', 'top', 'right', 'any', 'warning');
-       document.getElementById("direc").focus();
-   }else if(document.getElementById('telefono').value=="" && document.getElementById('celular').value==""){
-        notify(' Advertencia','Es necesario por lo menos un numero de telefono', 'top', 'right', 'any', 'warning');
-       document.getElementById("telefono").focus();
-   }else if(document.getElementById('email').value==""){
-        notify(' Advertencia','El campo E-mail es obligatorio,','top', 'right', 'any', 'warning');
-       document.getElementById("email").focus();
-   }else if(document.getElementById('tipo').value=="Seleccione"){
-        notify(' Advertencia','Seleccione un tipo de Ingreso', 'top', 'right', 'any', 'warning');
-       document.getElementById("tipo").focus();
-   }else if(document.getElementById('profecion').value==""){
-        notify(' Advertencia','El campo Profecion u Oficio es obligatorio', 'top', 'right', 'any', 'warning');
-       document.getElementById("profecion").focus();
-   }else if(document.getElementById('salario').value==""){
-        notify(' Advertencia','El campo Ingreso Promedio es obligatorio', 'top', 'right', 'any', 'warning');
-       document.getElementById("salario").focus();
-   }else if(document.getElementById('observ').value==""){
-        notify(' Advertencia','El campo Observaciones es obligatorio', 'top', 'right', 'any', 'warning');
-       document.getElementById("observ").focus();
-   }else{
-      document.form.submit();  
-   }   
-} 
-function recuperar(id){
-    
-    $.ajax({
-        data:{"id":id},
-        url: 'scriptsphp/recuperarFiador.php',
-        type: 'post',
-        beforeSend: function(){
-            alert("Por favr espere...");
-        },
-        success: function(response){
-            alert(response);
-            document.getElementById("fiador").value=response;
-            document.getElementById("idfiador").value=id;
-        }
-    });
-} 
-        function modify(id){
+        //Validaciones
+    if(document.getElementById('nombre').value==""){
+        //    alert("El campo nombre es obligatorio");
+        //    prueba :p
+        notify(' Advertencia','El campo Nombre es obligatorio.','top', 'right', 'any', 'warning');
+        document.getElementById("nombre").focus();
+    }else if(document.getElementById('apellido').value==""){
+            notify(' Advertencia','El campo Apellido es obligatorio,','top', 'right', 'any', 'warning');
+        document.getElementById("apellido").focus();
+    }else if(document.getElementById('dui').value==""){
+            notify(' Advertencia','El campo DUI es obligatorio','top', 'right', 'any', 'warning');
+        document.getElementById("dui").focus();
+    }else if(document.getElementById('nit').value==""){
+            notify(' Advertencia','El campo NIT es obligatorio', 'top', 'right', 'any', 'warning');
+        document.getElementById("nit").focus();
+    }else if(document.getElementById('direc').value==""){
+            notify(' Advertencia','El campo Direccion es obligatorio', 'top', 'right', 'any', 'warning');
+        document.getElementById("direc").focus();
+    }else if(document.getElementById('telefono').value=="" && document.getElementById('celular').value==""){
+            notify(' Advertencia','Es necesario por lo menos un numero de telefono', 'top', 'right', 'any', 'warning');
+        document.getElementById("telefono").focus();
+    }else if(document.getElementById('email').value==""){
+            notify(' Advertencia','El campo E-mail es obligatorio,','top', 'right', 'any', 'warning');
+        document.getElementById("email").focus();
+    }else if(document.getElementById('tipo').value=="Seleccione"){
+            notify(' Advertencia','Seleccione un tipo de Ingreso', 'top', 'right', 'any', 'warning');
+        document.getElementById("tipo").focus();
+    }else if(document.getElementById('profecion').value==""){
+            notify(' Advertencia','El campo Profecion u Oficio es obligatorio', 'top', 'right', 'any', 'warning');
+        document.getElementById("profecion").focus();
+    }else if(document.getElementById('salario').value==""){
+            notify(' Advertencia','El campo Ingreso Promedio es obligatorio', 'top', 'right', 'any', 'warning');
+        document.getElementById("salario").focus();
+    }else if(document.getElementById('observ').value==""){
+            notify(' Advertencia','El campo Observaciones es obligatorio', 'top', 'right', 'any', 'warning');
+        document.getElementById("observ").focus();
+    }else{
+        document.form.submit();  
+    }   
+    } 
+
+    function recuperar(id){
+        
+        $.ajax({
+            data:{"id":id},
+            url: 'scriptsphp/recuperarFiador.php',
+            type: 'post',
+            beforeSend: function(){
+                alert("Por favor espere...");
+            },
+            success: function(response){
+                alert(response);
+                document.getElementById("fiador").value=response;
+                document.getElementById("idfiador").value=id;
+            }
+        });
+    } 
+    function modify(id){
        document.location.href="editarCliente.php?id="+id;
    }
 </script>
@@ -263,7 +264,7 @@ function recuperar(id){
                             <h2>Datos del Cliente</h2>
                             
                         </div>
-                        <form name="form" method="post" action="../SISFIN/scriptsphp/modificarCliente.php?bandera=1">
+                        <form name="form" method="post" action="../sistemaFinanciero/scriptsphp/modificarCliente.php?bandera=1">
                         <input type="hidden" id="idfiador" name="idfiador" value="<?php echo $idR; ?>">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -328,8 +329,8 @@ function recuperar(id){
                                             }
                                         }
                                     }
-                                        ?> 
-										</select>
+                                    ?> 
+									</select>
                                 </div>
                             </div>
                            
@@ -585,12 +586,12 @@ function recuperar(id){
 
 </html>
 <?php
-
-function msg($var)
-{
-    echo "<script type='text/javascript'>";
-    echo "document.location.href='mostrarClientes.php?mod='+$var;";
-    echo "</script>";
-}
+        
+    function msg($var)
+    {
+        echo "<script type='text/javascript'>";
+        echo "document.location.href='mostrarClientes.php?mod='+$var;";
+        echo "</script>";
+    }
 
 ?>

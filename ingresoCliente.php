@@ -148,6 +148,9 @@ function go(){
    }else if(document.getElementById('salario').value==""){
         notify(' Advertencia:','El campo Ingreso Promedio es obligatorio', 'top', 'right', 'any', 'warning');
        document.getElementById("salario").focus();
+   }else if(document.getElementById('egreso').value==""){
+        notify(' Advertencia:','El campo Egreso Promedio es obligatorio', 'top', 'right', 'any', 'warning');
+        document.getElementById("egreso").focus();
    }else if(document.getElementById('observ').value==""){
         notify(' Advertencia:','El campo Observaciones es obligatorio', 'top', 'right', 'any', 'warning');
        document.getElementById("observ").focus();
@@ -226,8 +229,7 @@ function enviar(id){
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-example-wrap">
                         <div class="cmp-tb-hd">
-                            <h2>Datos del Cliente</h2>
-                            
+                            <h2>Datos del Cliente</h2>                            
                         </div>
                         <form name="form" method="post" action="ingresoCliente.php?bandera=1">
                         <input type="hidden" id="idfiador" name="idfiador">
@@ -277,7 +279,7 @@ function enviar(id){
                                 </div>
                             </div>
                            
-                            <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-10">
+                            <!--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10">
                                 <div class="form-example-int mg-t-15">
                                     <div class="form-group">
                                         <label>Fiador:</label>
@@ -287,14 +289,14 @@ function enviar(id){
                                         </div>
                                      </div>                            
                                 </div>
-                            </div> -->
+                            </div>
 
-                            <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-10">
+                           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-10">
                                <div class="">
                                    <br>
 									<button  type="button" data-toggle="modal" data-target="#myModalone" class="btn btn-success success-icon-notika btn-reco-mg btn-button-mg waves-effect"><i class="notika-icon notika-house"></i></button>
 								</div>
-                            </div> -->
+                            </div>-->                           
                             
                         </div>
                         
@@ -323,8 +325,7 @@ function enviar(id){
                                      </div>                            
                                 </div>
                             </div>
-
-                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" >
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" >
                                 <div class="form-example-int mg-t-15">
                                     <div class="form-group">
                                         <label>Celular:</label>
@@ -333,22 +334,23 @@ function enviar(id){
                                         </div>
                                      </div>                            
                                 </div>
-                            </div>
+                            </div>     
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="form-example-int mg-t-15">
                                     <div class="form-group">
-                                        <label>E-mail:</label>
+                                        <label>Ingreso Promedio $ (Mensual)</label>
                                         <div class="nk-int-st">
-                                           <input type="text" name="email" id="email" class="form-control input-sm" placeholder="Ingrese el E-mail">
+                                           <input type="number" name="salario" id="salario" class="form-control input-sm" placeholder="Introduzca Ingreso Promedio">
                                         </div>
                                      </div>                            
                                 </div>
-                            </div>
+                            </div>                      
+                            
                         </div>
                         <!-- salrios-->
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                
+                                <div class="form-example-int mg-t-15">
                                 <label>Tipo de Ingreso</label>
                                 <div class="bootstrap-select fm-cmp-mg">
                                     <select class="selectpicker" data-live-search="true" name="tipo" id="tipo">
@@ -358,8 +360,10 @@ function enviar(id){
 											<option>Salario Informal</option>
 										</select>
                                 </div>
+                                </div>
                             </div>
-                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" >
+                            
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" >
                                 <div class="form-example-int mg-t-15">
                                     <div class="form-group">
                                         <label>Profecion u oficio</label>
@@ -372,15 +376,48 @@ function enviar(id){
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="form-example-int mg-t-15">
                                     <div class="form-group">
-                                        <label>Ingreso Promedio $ (Mensual)</label>
+                                        <label>Egreso Promedio $ (Mensual)</label>
                                         <div class="nk-int-st">
-                                           <input type="number" name="salario" id="salario" class="form-control input-sm" placeholder="Introduzca Ingreso Promedio">
+                                           <input type="number" name="egreso" id="egreso" class="form-control input-sm" placeholder="Introduzca Egreso Promedio">
                                         </div>
                                      </div>                            
                                 </div>
                             </div>
-                        </div>
-                        
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                <label>Cartera</label>
+                                <div class="bootstrap-select fm-cmp-mg">
+                                    <select class="selectpicker" data-live-search="true" name="cartera" id="cartera">
+                                    <option value="Seleccione">Seleccione</option>
+                                    <?php
+                                     include 'config/conexion.php';
+                                     $result = $conexion->query("select id_categoria as id,nombre FROM tcartera");
+                                     if ($result) {
+                                         while ($fila = $result->fetch_object()) {
+                                            if ($fila->id == $idcaertera ) {
+                                                echo '<option value="' . $fila->id. '" selected>' . $fila->nombre . '</opcion>';
+                                            }else {
+                                                echo '<option value="' . $fila->id . '">' . $fila->nombre . '</opcion>';
+                                            }
+                                        }
+                                    }
+                                        ?> 
+										</select>
+                                    </div>
+                                </div>
+                            </div>                           
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <div class="form-example-int mg-t-15">
+                                <div class="form-group">
+                                    <label>E-mail:</label>
+                                    <div class="nk-int-st">
+                                        <input type="text" name="email" id="email" class="form-control input-sm" placeholder="Ingrese el E-mail">
+                                    </div>
+                                    </div>                            
+                            </div>
+                            </div>                           
+                        </div>                       
+                            
                             
                         <div class="row">
                             <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
@@ -406,7 +443,7 @@ function enviar(id){
                         </div> -->
                         
                         <div class="form-example-int mg-t-15">
-                            <button type="button" class="btn btn-success notika-btn-success" onclick="go();">Guardar.</button>
+                            <button type="button" class="btn btn-success notika-btn-success" onclick="go();">Guardar</button>
                             <button  type="reset" class="btn btn-warning" data-dismiss="modal">Limpiar</button>
                         </div>               
                         </form>
@@ -442,29 +479,28 @@ function enviar(id){
                                     </tr>
                                 </thead>
                                 <tbody>
-                                        <?php
-include "config/conexion.php";
-$result = $conexion->query("SELECT * from tfiador ORDER BY id_fiador");
-if ($result) {
-    while ($fila = $result->fetch_object()) {
-        echo "<tr>";
-        echo "<td>" . $fila->nombre . "</td>";
-        echo "<td>" . $fila->apellido . "</td>";
-        echo "<td>" . $fila->dui . "</td>";  
-        
-        echo "<td>
-        <div class='button-icon-btn'>
-        <button class='btn btn-info info-icon-notika btn-reco-mg btn-button-mg' data-dismiss='modal' onclick=\"enviar('$fila->id_fiador')\";><i class='notika-icon notika-next'></i></button>
-        </div>
-        </td>";
-        echo "</tr>";
+                                <?php
+                                    include "config/conexion.php";
+                                    $result = $conexion->query("SELECT * from tfiador ORDER BY id_fiador");
+                                    if ($result) {
+                                        while ($fila = $result->fetch_object()) {
+                                            echo "<tr>";
+                                            echo "<td>" . $fila->nombre . "</td>";
+                                            echo "<td>" . $fila->apellido . "</td>";
+                                            echo "<td>" . $fila->dui . "</td>";  
+                                            
+                                            echo "<td>
+                                            <div class='button-icon-btn'>
+                                            <button class='btn btn-info info-icon-notika btn-reco-mg btn-button-mg' data-dismiss='modal' 
+                                            onclick=\"enviar('$fila->id_fiador')\";><i class='notika-icon notika-next'></i></button>
+                                            </div>
+                                            </td>";
+                                            echo "</tr>";
 
-    }
-}
-?>
-                                
+                                        }
+                                    }
+                                    ?>                               
                                    
-                                    
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -588,29 +624,32 @@ if ($result) {
 
 </html>
 <?php
-include "config/conexion.php";
-$accion = $_REQUEST['bandera'];
-if($accion==1){
-$nombre   = $_POST['nombre'];
-$apellido   = $_POST['apellido'];
-$direccion   = $_POST['direc'];
-$dui  = $_POST['dui'];
-$nit   = $_POST['nit'];
-$email   = $_POST['email'];
-$tel   = $_POST['telefono'];
-$cel  = $_POST['celular'];
-$tipo=$_POST['tipo'];
-$prof=$_POST['profecion'];
-$salario=$_POST['salario'];
-$observ  = $_POST['observ'];
-    $consulta  = "INSERT INTO tclientes VALUES('null','4','" .$nombre. "','" .$apellido. "','" .$direccion. "','" .$dui. "','" .$nit. "','" .$prof. "','" .$tipo. "','" .$salario. "','" .$tel. "','" .$cel. "','" .$email. "','" .$observ. "')";
-    $resultado = $conexion->query($consulta);
-      if ($resultado) {
-        msgI("Los datos fueron almacenados con exito");
-      } else {
-        msgE("Los datos no pudieron almacenarce");
-      }     
-}
+    include "config/conexion.php";
+    $accion = $_REQUEST['bandera'];
+        if($accion==1){
+        $nombre   = $_POST['nombre'];
+        $apellido   = $_POST['apellido'];
+        $direccion   = $_POST['direc'];
+        $dui  = $_POST['dui'];
+        $nit   = $_POST['nit'];
+        $email   = $_POST['email'];
+        $tel   = $_POST['telefono'];
+        $cel  = $_POST['celular'];
+        $tipo = $_POST['tipo'];
+        $cartera  = $_POST['cartera'];
+        $prof=$_POST['profecion'];
+        $salario=$_POST['salario'];
+        $egreso = $_POST['egreso'];
+        $observ  = $_POST['observ'];
+        msgI($egreso);
+        $consulta  = "INSERT INTO tclientes VALUES('null','" .$cartera. "','" .$nombre. "','" .$apellido. "','" .$direccion. "','" .$dui. "','" .$nit. "','" .$prof. "','" .$tipo. "','" .$salario. "','" .$tel. "','" .$cel. "','" .$email. "','" .$observ. "','" .$egreso. "')";
+        $resultado = $conexion->query($consulta);
+        if ($resultado) {
+            msgI("Los datos fueron almacenados con exito");
+        } else {
+            msgE("Los datos no pudieron almacenarce");
+        }     
+    }
 function msgI($texto)
 {
     echo "<script type='text/javascript'>";
