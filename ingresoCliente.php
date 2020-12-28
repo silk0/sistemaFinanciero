@@ -16,7 +16,7 @@ $id  = $_REQUEST["id"];
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Ingreso de Clientes | SISFIN</title>
+    <title>Ingreso de Clientes-Sistema Financiero</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- bootstrap select CSS
