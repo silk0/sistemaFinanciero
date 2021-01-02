@@ -476,10 +476,7 @@ if ($result) {
     <!-- main JS
 		============================================ -->
     <script src="js/main.js"></script>
-	<!-- tawk chat JS
-		============================================ -->
-    <script src="js/tawk-chat.js"></script>
-     <!--  notification JS
+	  <!--  notification JS
 		============================================ -->
         <script src="js/notification/bootstrap-growl.min.js"></script>
     <script src="js/notification/notification-active.js"></script>

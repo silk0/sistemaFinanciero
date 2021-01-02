@@ -279,7 +279,7 @@ function enviar(id){
                                 </div>
                             </div>
                            
-                            <!--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10">
+                            <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-10">
                                 <div class="form-example-int mg-t-15">
                                     <div class="form-group">
                                         <label>Fiador:</label>
@@ -296,7 +296,7 @@ function enviar(id){
                                    <br>
 									<button  type="button" data-toggle="modal" data-target="#myModalone" class="btn btn-success success-icon-notika btn-reco-mg btn-button-mg waves-effect"><i class="notika-icon notika-house"></i></button>
 								</div>
-                            </div>-->                           
+                            </div> -->                       
                             
                         </div>
                         

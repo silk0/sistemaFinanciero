@@ -196,49 +196,28 @@ function notify(titulo,texto,from, align, icon, type, animIn, animOut){
     <!-- Main Menu area End-->
 	<!-- Breadcomb area Start-->
 	<div class="breadcomb-area">
-		<div class="container">
-            <center>
-        <div class="col-lg-12 col-md-4 col-sm-4 col-xs-12">
-                            <label>Filtrado</label>
-                                <div class="bootstrap-select fm-cmp-mg">
-                                    <select class="selectpicker" data-live-search="true" name="op" id="op" onchange="filtrar()">
-                                    <?php
-                      include '../config/conexion.php';
-                      $result = $conexion->query("SELECT id_categoria as id ,nombre FROM  tcartera ");
-                      if ($result) {
-                        echo "<option value='".$fila->id."'>Seleccione</option>";
-                        while ($fila = $result->fetch_object()) {
-                          echo "<option value='".$fila->id."'>".$fila->nombre."</option>";
-                         
-                        
-                           }
-                      }
-                       ?>
-                                    </select>
-                                </div>
-                                </div>
-                                </center>
+		<div class="container">    
 			<div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                    
 					<div class="breadcomb-list">
 						<div class="row">
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
 									<div class="breadcomb-icon">
 										<i class="notika-icon notika-form"></i>
-                                    </div>
-                                    <form id="form" name="form" action="" method="GET">
-<div class="input-group " style="padding-bottom:20px;">
-  <input id="ide" type="hidden" class="form-control" name="ide" placeholder="En que año estudio el grado anterior">
-  </div>
-  </form>
+                    </div>
+                    <form id="form" name="form" action="" method="GET">
+                    <div class="input-group " style="padding-bottom:20px;">
+                    <input id="ide" type="hidden" class="form-control" name="ide" placeholder="En que año estudio el grado anterior">
+                    </div>
+                    </form>
 									<div class="breadcomb-ctn">
 										<h2>Lista de Clientes por Cartera.</h2>
 										<p>Datos <span class="bread-ntd">de Clientes.</span></p>
 									</div>
 								</div>
 							</div>
+              
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 								<div class="breadcomb-report">
 									<button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
@@ -256,6 +235,27 @@ function notify(titulo,texto,from, align, icon, type, animIn, animOut){
   <!-- Data Table area Start-->
   <div class="data-table-area">
         <div class="container">
+        <div class="row">
+        <div class="col-lg-12 col-md-4 col-sm-4 col-xs-12">
+          <label>Filtrado</label>
+              <div class="bootstrap-select fm-cmp-mg">
+                  <select class="selectpicker" data-live-search="true" name="op" id="op" onchange="filtrar()">
+                  <?php
+                    include '../config/conexion.php';
+                    $result = $conexion->query("SELECT id_categoria as id ,nombre FROM  tcartera ");
+                    if ($result) {
+                      echo "<option value='".$fila->id."'>Seleccione</option>";
+                      while ($fila = $result->fetch_object()) {
+                        echo "<option value='".$fila->id."'>".$fila->nombre."</option>";
+                      
+                      
+                        }
+                    }
+                    ?>
+                  </select>
+              </div>
+            </div>
+            </div>
             
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -326,15 +326,13 @@ function notify(titulo,texto,from, align, icon, type, animIn, animOut){
         <!-- Data Table area End-->
  <!-- MODAL PARA FIADOR -->
  <div class="modal animated shake" id="ModalInfo" role="dialog">
-                                    <div class="modal-dialog modal-large">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            </div>
-                                            <div class="modal-body">
-                                          
-
-        <h1>Detalles del Activo</h1>
+                      <div class="modal-dialog modal-large">
+                      <div class="modal-content">
+                      <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      <div class="modal-body">      
+        <               h1>Detalles del Activo</h1>
                         <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <label>Tipo Activo (falta)</label>
@@ -578,10 +576,7 @@ function notify(titulo,texto,from, align, icon, type, animIn, animOut){
     <script src="js/data-table/data-table-act.js"></script>
     <!-- main JS
 		============================================ -->
-    <script src="js/main.js"></script>
-	<!-- tawk chat JS
-		============================================ -->
-    <script src="js/tawk-chat.js"></script>
+    <script src="js/main.js"></script>	
      <!--  notification JS
 		============================================ -->
         <script src="js/notification/bootstrap-growl.min.js"></script>

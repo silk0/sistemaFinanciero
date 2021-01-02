@@ -305,7 +305,7 @@ function enviarC(id){
                                     <div class="form-group">
                                         <label>Precio de Compra:</label>
                                         <div class="nk-int-st">
-                                           <input type="text" name="pcompra" id="pcompra" class="form-control input-sm" readonly placeholder="Precio de compra." value="0.00">
+                                           <input type="text" name="pcompra" id="pcompra" class="form-control input-sm"  placeholder="Precio de compra." value="0.00">
                                         </div>
                                      </div>                            
                                 </div>

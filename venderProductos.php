@@ -99,7 +99,7 @@ $id  = $_REQUEST["id"];
              //aQUI CVA A IR EL CODIGO AJAX PARA PODER ANADIR AL CARRITO
               $.ajax({
         data:{"id":id,"cantidadDeseada":cantidadDeseada,"op":1},
-        url: 'scriptsphp/ajaxCarrito.php',
+        url: 'sistemaFinanciero/scriptsphp/ajaxCarrito.php',
         type: 'post',
         beforeSend: function(){
             // alert("Por favor espere...");
@@ -300,9 +300,7 @@ $id  = $_REQUEST["id"];
     <!-- main JS
 		============================================ -->
     <script src="js/main.js"></script>
-	<!-- tawk chat JS
-		============================================ -->
-    <script src="js/tawk-chat.js"></script>
+	
 </body>
 
 </html>

@@ -226,29 +226,29 @@ $id  = $_REQUEST["id"];
                                     </tr>
                                 </thead>
                                 <tbody>
-                      <?php
-include "config/conexion.php";
-$result = $conexion->query("SELECT * from tfiador ORDER BY id_fiador");
-if ($result) {
-    while ($fila = $result->fetch_object()) {
-        echo "<tr>";
-        echo "<td>" . $fila->nombre . "</td>";
-        echo "<td>" . $fila->apellido . "</td>";
-        echo "<td>" . $fila->dui . "</td>";  
-        echo "<td>" . $fila->telefono . "</td>";
-        echo "<td>" . $fila->celular . "</td>";
-        echo "<td>" . $fila->correo . "</td>";
-        echo "<td>
-        <div class='button-icon-btn'>
-       <button class='btn btn-lightgreen lightgreen-icon-notika btn-reco-mg btn-button-mg' onclick='modify(" . $fila->id_fiador. ")'><i class='notika-icon notika-menus'></i></button>
-       <button title='Ver' class='btn btn-info info-icon-notika btn-reco-mg btn-button-mg' onclick=\"edit('$fila->id_fiador','$fila->nombre','$fila->apellido','$fila->direccion','$fila->dui','$fila->nit','$fila->correo','$fila->profecion','$fila->salario','$fila->telefono','$fila->celular')\";><i class='notika-icon notika-search'></i></button>
-        </div>
-        </td>";
-        echo "</tr>";
+                                <?php
+                                include "config/conexion.php";
+                                $result = $conexion->query("SELECT * from tfiador ORDER BY id_fiador");
+                                  if ($result) {
+                                      while ($fila = $result->fetch_object()) {
+                                          echo "<tr>";
+                                          echo "<td>" . $fila->nombre . "</td>";
+                                          echo "<td>" . $fila->apellido . "</td>";
+                                          echo "<td>" . $fila->dui . "</td>";  
+                                          echo "<td>" . $fila->telefono . "</td>";
+                                          echo "<td>" . $fila->celular . "</td>";
+                                          echo "<td>" . $fila->correo . "</td>";
+                                          echo "<td>
+                                          <div class='button-icon-btn'>
+                                        <button class='btn btn-lightgreen lightgreen-icon-notika btn-reco-mg btn-button-mg' onclick='modify(" . $fila->id_fiador. ")'><i class='notika-icon notika-menus'></i></button>
+                                        <button title='Ver' class='btn btn-info info-icon-notika btn-reco-mg btn-button-mg' onclick=\"edit('$fila->id_fiador','$fila->nombre','$fila->apellido','$fila->direccion','$fila->dui','$fila->nit','$fila->correo','$fila->profecion','$fila->salario','$fila->telefono','$fila->celular')\";><i class='notika-icon notika-search'></i></button>
+                                          </div>
+                                          </td>";
+                                          echo "</tr>";
 
-    }
-}
-?>
+                                      }
+                                  }
+                                ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -271,134 +271,128 @@ if ($result) {
     <!-- Data Table area End-->
     <!-- MODAL PARA FIADOR -->
  <div class="modal animated shake" id="ModalInfo" role="dialog">
-                                    <div class="modal-dialog modal-large">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            </div>
-                                            <div class="modal-body">
-                                          
-
-        <h1>Datos del Fiador</h1>
-        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-example-int">
-                                    <div class="form-group">
-                                        <label>Nombre:</label>
-                                        <div class="nk-int-st">
-                                        <input type="text" name="nombrem" id="nombrem" class="form-control input-sm" readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-example-int">
-                                    <div class="form-group">
-                                        <label>Apellido:</label>
-                                        <div class="nk-int-st">
-                                        <input type="text" name="apellidom" id="apellidom" class="form-control input-sm" readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-                            <div class="form-example-int">
-                            <div class="form-group">
-                                <label>Dirección:</label>
-                                <div class="nk-int-st">
-                                    <input type="text" name="direccionm" id="direccionm"class="form-control input-sm" readonly>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                        </div>
-                        <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-example-int">
-                                    <div class="form-group">
-                                        <label>DUI:</label>
-                                        <div class="nk-int-st">
-                                           <input type="text" name="duim" id="duim" class="form-control input-sm" readonly>
-                                        </div>
-                                     </div>                            
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-example-int">
-                                    <div class="form-group">
-                                        <label>NIT:</label>
-                                        <div class="nk-int-st">
-                                           <input type="text" name="nitm" id="nitm" class="form-control input-sm" readonly>
-                                        </div>
-                                     </div>                            
-                                </div>
-                            </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-example-int">
-                                    <div class="form-group">
-                                        <label>Correo:</label>
-                                        <div class="nk-int-st">
-                                        <input type="text" name="correom" id="correom" class="form-control input-sm" readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-example-int">
-                                    <div class="form-group">
-                                        <label>Profesión:</label>
-                                        <div class="nk-int-st">
-                                        <input type="text" name="profem" id="profem" class="form-control input-sm" readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-example-int">
-                                    <div class="form-group">
-                                        <label>Salario:</label>
-                                        <div class="nk-int-st">
-                                        <input type="text" name="salm" id="salm" class="form-control input-sm" readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-example-int">
-                                    <div class="form-group">
-                                        <label>Telefono:</label>
-                                        <div class="nk-int-st">
-                                        <input type="text" name="telm" id="telm" class="form-control input-sm" readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                           
-
-                             
-                            </div>
-                            
-                        <div class="row">
-                         <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12" >
-                                <div class="form-example-int mg-t-15">
-                                    <div class="form-group">
-                                        <label>Celular:</label>
-                                        <div class="nk-int-st">
-                                           <input type="text" name="celm" id="celm" class="form-control input-sm" readonly>
-                                        </div>
-                                     </div>                            
-                                </div>
-                            </div>
-                            
-                        </div>
-                        </div>
-                                            <div class="modal-footer">
-                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+              <div class="modal-dialog modal-large">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      <div class="modal-body">
+                      <h1>Datos del Fiador</h1>
+                      <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          <div class="form-example-int">
+                              <div class="form-group">
+                                  <label>Nombre:</label>
+                                  <div class="nk-int-st">
+                                  <input type="text" name="nombrem" id="nombrem" class="form-control input-sm" readonly>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          <div class="form-example-int">
+                              <div class="form-group">
+                                  <label>Apellido:</label>
+                                  <div class="nk-int-st">
+                                  <input type="text" name="apellidom" id="apellidom" class="form-control input-sm" readonly>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                      <div class="form-example-int">
+                      <div class="form-group">
+                          <label>Dirección:</label>
+                          <div class="nk-int-st">
+                              <input type="text" name="direccionm" id="direccionm"class="form-control input-sm" readonly>
+                          </div>
+                      </div>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          <div class="form-example-int">
+                              <div class="form-group">
+                                  <label>DUI:</label>
+                                  <div class="nk-int-st">
+                                    <input type="text" name="duim" id="duim" class="form-control input-sm" readonly>
+                                  </div>
+                              </div>                            
+                          </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          <div class="form-example-int">
+                              <div class="form-group">
+                                  <label>NIT:</label>
+                                  <div class="nk-int-st">
+                                    <input type="text" name="nitm" id="nitm" class="form-control input-sm" readonly>
+                                  </div>
+                              </div>                            
+                          </div>
+                      </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          <div class="form-example-int">
+                              <div class="form-group">
+                                  <label>Correo:</label>
+                                  <div class="nk-int-st">
+                                  <input type="text" name="correom" id="correom" class="form-control input-sm" readonly>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          <div class="form-example-int">
+                              <div class="form-group">
+                                  <label>Profesión:</label>
+                                  <div class="nk-int-st">
+                                  <input type="text" name="profem" id="profem" class="form-control input-sm" readonly>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          <div class="form-example-int">
+                              <div class="form-group">
+                                  <label>Salario:</label>
+                                  <div class="nk-int-st">
+                                  <input type="text" name="salm" id="salm" class="form-control input-sm" readonly>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          <div class="form-example-int">
+                              <div class="form-group">
+                                  <label>Telefono:</label>
+                                  <div class="nk-int-st">
+                                  <input type="text" name="telm" id="telm" class="form-control input-sm" readonly>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      </div>
+                  <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12" >
+                          <div class="form-example-int mg-t-15">
+                              <div class="form-group">
+                                  <label>Celular:</label>
+                                  <div class="nk-int-st">
+                                    <input type="text" name="celm" id="celm" class="form-control input-sm" readonly>
+                                  </div>
+                              </div>                            
+                          </div>
+                      </div>
+                      
+                  </div>
+                  </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
             <!-- FIN PARA MODAL DE FIADOR -->
     
         <!-- Start Footer area-->
@@ -467,14 +461,11 @@ if ($result) {
     <!-- main JS
 		============================================ -->
     <script src="js/main.js"></script>
-	<!-- tawk chat JS
-
-        <!--  notification JS
-        ============================================ -->
-        <script src="js/notification/bootstrap-growl.min.js"></script>
+    <!--  notification JS
+    ============================================ -->
+    <script src="js/notification/bootstrap-growl.min.js"></script>
     <script src="js/notification/notification-active.js"></script>
-		============================================ -->
-    <script src="js/tawk-chat.js"></script>
+	
 </body>
 
 </html>
